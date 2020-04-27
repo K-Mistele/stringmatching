@@ -1,4 +1,7 @@
-# IMPORTS
+# MODULES
+
+# CUSTOM IMPORTS
+from library.searchfunctions import  naiveSearch, boyerMooreSearch
 
 # MAIN
 def main():
@@ -9,5 +12,8 @@ def main():
         corpus = f.read()
 
     print(f'Length of corpus: {len(corpus)} characters')
+
+    naiveSearch(corpus, "mountain")
+    boyerMooreSearch(corpus, "register")
 
 main()
