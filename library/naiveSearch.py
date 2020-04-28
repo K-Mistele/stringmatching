@@ -1,6 +1,9 @@
 
 def naiveSearch(corpus, searchTerm):
-    print(f'Searching corpus for {searchTerm}')
+    print(f'Searching corpus for "{searchTerm}"')
+    print(f'**********************************')
+
+    # GRAB LENGTHS OF BOTH STRINGS FOR LOOP CONTROL
     corpusLength = len(corpus)
     searchTermLength = len(searchTerm)
 
@@ -30,7 +33,5 @@ def naiveSearch(corpus, searchTerm):
         # IF AN ALIGNENT WAS FOUND, PRINT IT!
         else:
             print(f'Found an alignment at {i}!')
+    print('\n\n')
 
-
-def boyerMooreSearch(corpus, searchTerm):
-    print(f'Using Boyer-Moore to search corpus for {searchTerm}')

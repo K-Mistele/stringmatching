@@ -1,19 +1,21 @@
 # MODULES
 
 # CUSTOM IMPORTS
-from library.searchfunctions import  naiveSearch, boyerMooreSearch
+from library.naiveSearch import  naiveSearch
+from library.boyerMooreSearch import boyerMooreSearch
 
 # MAIN
 def main():
+    # TODO: FIND A BETTER WAY TO PROCESS INPUTS & ARGUMENTS
     print("Hello world!")
 
-    corpus = ""
     with open("corpus.txt", 'r') as f:
         corpus = f.read()
 
     print(f'Length of corpus: {len(corpus)} characters')
 
-    naiveSearch(corpus, "mountain")
-    boyerMooreSearch(corpus, "register")
+    naiveSearch(corpus, "ggatcccatg")
+    boyerMooreSearch(corpus, "gggggctatc")
+
 
 main()
