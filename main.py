@@ -15,21 +15,18 @@ def parseArgs():
     return args.filename, args.searchTerm
 # MAIN
 def main():
-
+    print("Hello world!")
     # GRAB THE PARSER ARGUMENTS
     textFileName, pattern = parseArgs()
-    print(textFileName, pattern)
-    print("Hello world!")
+    print(f'Received arguments textFileName: {textFileName} and pattern: {pattern}')
 
-    with open("corpus.txt", 'r') as f:
+    with open(textFileName, 'r') as f:
         corpus = f.read()
 
-    # TODO THIS IS JUST FOR DEBUGGING
-    corpus = "ATAGCCAGCATTTAGCCAGCAGCA"
     print(f'Length of corpus: {len(corpus)} characters')
 
-    naiveSearch(corpus, "CAGCA")
-    boyerMooreSearch(corpus, "CAGCA")
+    naiveSearch(corpus, pattern)
+    boyerMooreSearch(corpus, pattern)
 
 
 main()
