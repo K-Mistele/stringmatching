@@ -12,10 +12,12 @@ def main():
     with open("corpus.txt", 'r') as f:
         corpus = f.read()
 
+    # TODO THIS IS JUST FOR DEBUGGING
+    corpus = "ATAGCCAGCATTTAGCCAGCAGCA"
     print(f'Length of corpus: {len(corpus)} characters')
 
-    naiveSearch(corpus, "ggatcccatg")
-    boyerMooreSearch(corpus, "gggggctatc")
+    naiveSearch(corpus, "CAGCA")
+    boyerMooreSearch(corpus, "CAGCA")
 
 
 main()
