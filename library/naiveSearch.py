@@ -1,14 +1,16 @@
 
 def naiveSearch(corpus, searchTerm):
-    print(f'Searching corpus for "{searchTerm}"')
-    print(f'**********************************')
+    print(f'Searching corpus for "{searchTerm} with Naive Search"')
+    print(f'******************************************************')
 
     # GRAB LENGTHS OF BOTH STRINGS FOR LOOP CONTROL
     corpusLength = len(corpus)
     searchTermLength = len(searchTerm)
 
     # CREATE ALIGNMENTS
+    totalShifts = 0
     for i in range(0, corpusLength - searchTermLength + 1):
+        totalShifts += 1
         # CREATE A POINTER FOR ALIGNMENTS. IT STARTS AT THE BEGINNING OF THE PATTERN, I.E. AT INDEX 0
         # IF THE FIRST CHARACTER OF THE ALIGNMENT MATCHES, KEEP INCREMENTING IT
         alignmentPointer = 0
@@ -32,6 +34,10 @@ def naiveSearch(corpus, searchTerm):
 
         # IF AN ALIGNENT WAS FOUND, PRINT IT!
         else:
-            print(f'Found an alignment at {i}!')
+            print(f'Found a match at shift {i}!')
+            print(corpus)
+            print(" " * i + searchTerm)
+    print(f'\nTotal shifts: {totalShifts}')
     print('\n\n')
+
 
