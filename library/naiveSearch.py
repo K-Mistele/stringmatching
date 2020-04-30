@@ -1,7 +1,11 @@
+import time
 
 def naiveSearch(corpus, searchTerm):
     print(f'Searching corpus for "{searchTerm} with Naive Search"')
     print(f'******************************************************')
+
+    # GRAB THE START TIME
+    tic = time.process_time_ns()
 
     # GRAB LENGTHS OF BOTH STRINGS FOR LOOP CONTROL
     corpusLength = len(corpus)
@@ -38,8 +42,10 @@ def naiveSearch(corpus, searchTerm):
         else:
             print(f'Found a match at shift {i}!')
 
-    print(f'\nTotal shifts: {totalShifts}')
-    print(f'Total comparisons: {totalComparisons}')
-    print('\n\n')
+    # CALCULATE ELAPSED NS AFTER COMPLETION
+    toc = time.process_time_ns()
+    elapsedTimeNS = toc - tic
+    elapsedTimeMS = elapsedTimeNS / (10**6) # CONVERT TO MILLISECONDS
+    return totalShifts, totalComparisons, elapsedTimeMS
 
 

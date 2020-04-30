@@ -25,8 +25,19 @@ def main():
 
     print(f'Length of corpus: {len(corpus)} characters')
 
-    naiveSearch(corpus, pattern)
-    boyerMooreSearch(corpus, pattern)
+    # DO NAIVE SEARCH
+    nsShifts, nsComparisons, nsTimeMS = naiveSearch(corpus, pattern)
+    print(f'Total Shifts:       {nsShifts}')
+    print(f'Total Comparisons:  {nsComparisons}')
+    print(f'Elapsed Time (ms):  {nsTimeMS}')
+
+    print()
+
+    # DO BOYER MOORE SEARCH
+    bmShifts, bmComparisons, bmTimeMS = boyerMooreSearch(corpus, pattern)
+    print(f'Total Shifts:       {bmShifts}')
+    print(f'Total Comparisons:  {bmComparisons}')
+    print(f'Elapsed Time(ms):   {bmTimeMS}')
 
 
 main()

@@ -1,9 +1,8 @@
 # IMPORTS
 import string
-
+import time
 # CREATE A TABLE THAT TELLS US HOW FAR TO SHIFT WHEN A MISMATCH HAPPENS BASED ON THE PATTERN
 def _createBadCharacterHeuristicTable(searchTerm):
-    print("Building bad character table")
 
     # CREATE AN ALPHABET THAT IS ALL OF THE PRINTABLE STRING CHARACTERS
     # SLICE 0 THROUGH UP TO THE 5TH FROM LAST CHARACTERS; OTHERS ARE TAB, NEWLINE, BYTES, ETC
@@ -29,7 +28,6 @@ def _createBadCharacterHeuristicTable(searchTerm):
     return table
 
 def _createGoodSuffixHeuristicTable(searchTerm):
-    print("Building good suffix table")
 
     # BUILD AN ARRAY shiftDistance WHERE EACH ENTRY shiftDistance[i] CONTAINS THE SHIFT DISTANCE OF THE PATTERN
     # IF A MISMATCH AT POSITION I - 1 IN THE PATTERN OCCURS
@@ -68,6 +66,8 @@ def boyerMooreSearch(corpus, searchTerm):
     print(f'Using Boyer-Moore to search corpus for "{searchTerm}"')
     print(f'*********************************************************')
 
+    # GRAB START TIME
+    tic = time.process_time_ns()
     # GRAB LENGTHS OF BOTH STRINGS FOR LOOP CONTROL
     corpusLength = len(corpus)
     searchTermLength = len(searchTerm)
@@ -124,5 +124,9 @@ def boyerMooreSearch(corpus, searchTerm):
             nextShift = max(nextShiftBadChar, nextShiftGoodChar)
 
         shift += nextShift
-    print(f'\nTotal Shifts: {totalShifts}')
-    print(f'Total Comparisons: {totalComparisons}')
+
+    # PROCESS TIMING AFTER ALGORITHM COMPLETION
+    toc = time.process_time_ns()
+    elapsedTimeNS = toc - tic
+    elapsedTimeMS = elapsedTimeNS / (10**6)       # CONVERT TO MILLISECONDS
+    return totalShifts, totalComparisons, elapsedTimeMS
