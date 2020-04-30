@@ -9,6 +9,7 @@ def naiveSearch(corpus, searchTerm):
 
     # CREATE ALIGNMENTS
     totalShifts = 0
+    totalComparisons = 0
     for i in range(0, corpusLength - searchTermLength + 1):
         totalShifts += 1
         # CREATE A POINTER FOR ALIGNMENTS. IT STARTS AT THE BEGINNING OF THE PATTERN, I.E. AT INDEX 0
@@ -19,6 +20,7 @@ def naiveSearch(corpus, searchTerm):
         alignmentFound = True
 
         while alignmentPointer < searchTermLength:
+            totalComparisons += 1
             # IF THE CHARACTER MATCHES, CHECK THE NEXT ONE IN THE ALIGNMENT
             if searchTerm[alignmentPointer] == corpus[i + alignmentPointer]:
                 alignmentPointer += 1
@@ -35,9 +37,9 @@ def naiveSearch(corpus, searchTerm):
         # IF AN ALIGNENT WAS FOUND, PRINT IT!
         else:
             print(f'Found a match at shift {i}!')
-            print(corpus)
-            print(" " * i + searchTerm)
+
     print(f'\nTotal shifts: {totalShifts}')
+    print(f'Total comparisons: {totalComparisons}')
     print('\n\n')
 
 
