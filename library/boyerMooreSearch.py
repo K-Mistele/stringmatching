@@ -81,19 +81,18 @@ def boyerMooreSearch(corpus, searchTerm):
 
     shift = 0
     totalShifts = 0
+    totalComparisons = 0
     # LOOP UNTIL WE HAVE SHIFTED THE SEARCH TERM TO BE ALIGNED WITH THE LAST CHARACTERS OF THE CORPUS TEXT
     while (shift + searchTermLength <= corpusLength ):
         totalShifts += 1
         # BECAUSE WE ARE ITERATING FROM LEFT TO RIGHT, WE WILL START AT THE RIGHTMOST CHARACTER WITH HAS INDEX len(str)-1
         # AND THEN DECREMENT IT AS WE ITERATE TO THE LEFT UNTIL IT REACHES 0
-        print(corpus)
-        print(" " * shift + searchTerm)
 
         indexInTerm = searchTermLength - 1
         matchFound = True
         # LOOP ACROSS THE ALIGNMENT FROM RIGHT TO LEFT
         while indexInTerm >= 0:
-
+            totalComparisons += 1
             # IF THE CHARACTERS MATCH, CONTINUE SO THAT WE CHECK THE ONES TO THE LEFT
             if searchTerm[indexInTerm] == corpus[shift + indexInTerm]:
                 indexInTerm -= 1
@@ -107,8 +106,6 @@ def boyerMooreSearch(corpus, searchTerm):
 
         if matchFound:
             print(f'Match found at shift = {shift}')
-            print(corpus)
-            print(" " * shift + searchTerm)
 
             # PREVENT OUT-OF-BOUNDS READ
             if shift + searchTermLength == corpusLength:
@@ -128,3 +125,4 @@ def boyerMooreSearch(corpus, searchTerm):
 
         shift += nextShift
     print(f'\nTotal Shifts: {totalShifts}')
+    print(f'Total Comparisons: {totalComparisons}')
