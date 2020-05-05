@@ -27,7 +27,7 @@ def main():
 
     # DO NAIVE SEARCH
     nsShifts, nsComparisons, nsTimeMS = naiveSearch(corpus, pattern)
-    print(f'Total Shifts:       {nsShifts}')
+    print(f'Total Alignments:   {nsShifts}')
     print(f'Total Comparisons:  {nsComparisons}')
     print(f'Elapsed Time (ms):  {nsTimeMS}')
 
@@ -35,7 +35,7 @@ def main():
 
     # DO BOYER MOORE SEARCH
     bmShifts, bmComparisons, bmTimeMS = boyerMooreSearch(corpus, pattern)
-    print(f'Total Shifts:       {bmShifts}')
+    print(f'Total Alignments:   {bmShifts}')
     print(f'Total Comparisons:  {bmComparisons}')
     print(f'Elapsed Time(ms):   {bmTimeMS}')
 
